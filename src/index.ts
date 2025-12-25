@@ -293,6 +293,20 @@ class GoogleDocsServer {
             type: 'object',
             properties: {}
           }
+        },
+        {
+          name: 'google_docs_to_markdown',
+          description: 'Export a Google Doc to Markdown format using Google\'s native markdown conversion.',
+          inputSchema: {
+            type: 'object',
+            properties: {
+              documentId: {
+                type: 'string',
+                description: 'ID of the document to export as Markdown'
+              }
+            },
+            required: ['documentId']
+          }
         }
       ];
       
@@ -420,6 +434,16 @@ class GoogleDocsServer {
           
           case 'google_docs_verify_connection': {
             const result = await this.googleDocs.verifyConnection();
+            return {
+              content: [{
+                type: 'text',
+                text: JSON.stringify(result, null, 2)
+              }]
+            };
+          }
+
+          case 'google_docs_to_markdown': {
+            const result = await this.googleDocs.exportAsMarkdown(args.documentId as string);
             return {
               content: [{
                 type: 'text',

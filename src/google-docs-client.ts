@@ -545,4 +545,37 @@ export class GoogleDocsClient {
       }
     }
   }
+
+  /**
+   * Export a Google Doc to Markdown using Google's native conversion
+   * @param documentId ID of the document to export
+   * @returns Markdown content as a string
+   */
+  async exportAsMarkdown(documentId: string): Promise<any> {
+    try {
+      // Get document title
+      const docInfo = await this.driveClient.files.get({
+        fileId: documentId,
+        fields: 'name'
+      });
+
+      // Use Google's native markdown export
+      const response = await this.driveClient.files.export({
+        fileId: documentId,
+        mimeType: 'text/markdown'
+      }, {
+        responseType: 'text'
+      });
+
+      return {
+        documentId,
+        title: docInfo.data.name || '',
+        markdown: response.data,
+        url: `https://docs.google.com/document/d/${documentId}/edit`
+      };
+    } catch (error: any) {
+      console.error('Error exporting document to markdown:', error);
+      return { error: error.message };
+    }
+  }
 }
