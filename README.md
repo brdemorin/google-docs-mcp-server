@@ -110,12 +110,19 @@ npx -y @brdemorin/google-docs-mcp-server
 
 1. Go to the [Google Cloud Console](https://console.cloud.google.com/)
 2. Create a new project or select an existing one
-3. Enable the Google Docs API and Google Drive API
+3. Enable the **Google Docs API** and **Google Drive API**:
+   - Go to "APIs & Services" > "Library"
+   - Search for "Google Docs API" and click "Enable"
+   - Search for "Google Drive API" and click "Enable"
 4. Go to "IAM & Admin" > "Service Accounts"
 5. Create a new service account
-6. Grant it the necessary roles (e.g., "Docs API User", "Drive API User")
-7. Create and download a JSON key for the service account
-8. Set the path to this JSON file in your `.env` file
+6. Create and download a JSON key for the service account
+7. Set the path to this JSON file in your environment as `GOOGLE_APPLICATION_CREDENTIALS`
+8. **Important: Share your Google Drive folder/documents with the service account:**
+   - Find the service account email in the JSON key file (looks like `your-service-account@your-project.iam.gserviceaccount.com`)
+   - Go to Google Drive and right-click the folder or document you want to access
+   - Click "Share" and add the service account email address
+   - Set permission to **Editor** (required for create/update operations)
 
 ### OAuth2 Authentication
 
