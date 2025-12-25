@@ -349,6 +349,17 @@ Here are some examples of how to use the tools:
 }
 ```
 
+### Export to Markdown
+
+```json
+{
+  "name": "google_docs_to_markdown",
+  "arguments": {
+    "documentId": "1Ax7vsdg3_YhKjkl2P0TZ5XYZ123456"
+  }
+}
+```
+
 ### Get a document
 
 ```json
@@ -381,17 +392,6 @@ Here are some examples of how to use the tools:
   "arguments": {
     "query": "meeting notes",
     "pageSize": 5
-  }
-}
-```
-
-### Export to Markdown
-
-```json
-{
-  "name": "google_docs_to_markdown",
-  "arguments": {
-    "documentId": "1Ax7vsdg3_YhKjkl2P0TZ5XYZ123456"
   }
 }
 ```
