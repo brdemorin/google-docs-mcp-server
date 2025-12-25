@@ -296,13 +296,17 @@ class GoogleDocsServer {
         },
         {
           name: 'google_docs_to_markdown',
-          description: 'Export a Google Doc to Markdown format using Google\'s native markdown conversion.',
+          description: 'Export a Google Doc to Markdown format using Google\'s native markdown conversion. By default returns a JSON object with documentId, title, markdown, and url. Set markdownOnly to true to return only the raw markdown string.',
           inputSchema: {
             type: 'object',
             properties: {
               documentId: {
                 type: 'string',
                 description: 'ID of the document to export as Markdown'
+              },
+              markdownOnly: {
+                type: 'boolean',
+                description: 'If true, return only the raw markdown string instead of the full JSON object with metadata'
               }
             },
             required: ['documentId']
@@ -444,10 +448,13 @@ class GoogleDocsServer {
 
           case 'google_docs_to_markdown': {
             const result = await this.googleDocs.exportAsMarkdown(args.documentId as string);
+            const outputText = args.markdownOnly === true
+              ? result.markdown
+              : JSON.stringify(result, null, 2);
             return {
               content: [{
                 type: 'text',
-                text: JSON.stringify(result, null, 2)
+                text: outputText
               }]
             };
           }
