@@ -8,10 +8,33 @@
 
 A powerful Model Context Protocol (MCP) server implementation for seamless Google Docs API integration, enabling AI assistants to create, read, update, and manage Google Docs.
 
-## Quick Start
+## Recommended Production Configuration
 
+**Full server start command via STDIO:**
 ```bash
 npx -y @brdemorin/google-docs-mcp-server
+```
+
+**Environment Variables:**
+```
+GOOGLE_CLOUD_PROJECT_ID=your-project-id
+GOOGLE_APPLICATION_CREDENTIALS=path/to/your-service-account-key.json
+```
+
+**MCP Config:**
+```json
+{
+  "mcpServers": {
+    "google-docs": {
+      "command": "npx",
+      "args": ["-y", "@brdemorin/google-docs-mcp-server"],
+      "env": {
+        "GOOGLE_CLOUD_PROJECT_ID": "your-project-id",
+        "GOOGLE_APPLICATION_CREDENTIALS": "path/to/your-service-account-key.json"
+      }
+    }
+  }
+}
 ```
 
 ## What's New in This Fork
