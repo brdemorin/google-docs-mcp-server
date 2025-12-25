@@ -1,10 +1,18 @@
 # Google Docs MCP Server
 
+[![npm version](https://img.shields.io/npm/v/@brdemorin/google-docs-mcp-server.svg)](https://www.npmjs.com/package/@brdemorin/google-docs-mcp-server)
+
 > **Fork of [lkm1developer/google-docs-mcp-server](https://github.com/lkm1developer/google-docs-mcp-server)**
 >
 > This fork adds **Markdown export** functionality using Google's native conversion.
 
 A powerful Model Context Protocol (MCP) server implementation for seamless Google Docs API integration, enabling AI assistants to create, read, update, and manage Google Docs.
+
+## Quick Start
+
+```bash
+npx -y @brdemorin/google-docs-mcp-server
+```
 
 ## What's New in This Fork
 
@@ -30,6 +38,14 @@ A powerful Model Context Protocol (MCP) server implementation for seamless Googl
 - Authentication credentials (API key, service account, or OAuth2)
 
 ## Installation
+
+### Option 1: npm (Recommended)
+
+```bash
+npx -y @brdemorin/google-docs-mcp-server
+```
+
+### Option 2: From Source
 
 1. Clone this repository:
    ```bash
@@ -243,19 +259,30 @@ To use this server with Claude or other MCP-compatible assistants, add it to you
 {
   "mcpServers": {
     "google-docs": {
-      "command": "node",
-      "args": ["/path/to/google-docs-mcp-server/dist/index.js"],
+      "command": "npx",
+      "args": ["-y", "@brdemorin/google-docs-mcp-server"],
       "env": {
         "GOOGLE_CLOUD_PROJECT_ID": "your-project-id",
-        "GOOGLE_APPLICATION_CREDENTIALS": "/path/to/your-service-account-key.json",
-        "GOOGLE_APPLICATION_CREDENTIALS_JSON": "{\"type\":\"service_account\",\"project_id\":\"...\"}",
-        "GOOGLE_API_KEY": "your-api-key",
+        "GOOGLE_APPLICATION_CREDENTIALS": "/path/to/your-service-account-key.json"
+      }
+    }
+  }
+}
+```
+
+Or with OAuth credentials:
+
+```json
+{
+  "mcpServers": {
+    "google-docs": {
+      "command": "npx",
+      "args": ["-y", "@brdemorin/google-docs-mcp-server"],
+      "env": {
         "client_id": "your-oauth-client-id",
         "client_secret": "your-oauth-client-secret",
         "refresh_token": "your-oauth-refresh-token"
-      },
-      "disabled": false,
-      "autoApprove": []
+      }
     }
   }
 }
