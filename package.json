@@ -1,6 +1,6 @@
 {
   "name": "@brdemorin/google-docs-mcp-server",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "A powerful Model Context Protocol (MCP) server implementation for seamless Google Docs API integration, enabling AI assistants to create, read, update, and manage Google Docs with markdown export support",
   "main": "dist/index.js",
   "bin": {
