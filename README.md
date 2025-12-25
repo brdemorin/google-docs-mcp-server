@@ -1,9 +1,18 @@
 # Google Docs MCP Server
 
+> **Fork of [lkm1developer/google-docs-mcp-server](https://github.com/lkm1developer/google-docs-mcp-server)**
+>
+> This fork adds **Markdown export** functionality using Google's native conversion.
+
 A powerful Model Context Protocol (MCP) server implementation for seamless Google Docs API integration, enabling AI assistants to create, read, update, and manage Google Docs.
+
+## What's New in This Fork
+
+- **`google_docs_to_markdown`** - Export any Google Doc to Markdown format using Google's native conversion (not custom parsing)
 
 ## Features
 
+- **Export documents to Markdown** (new in this fork)
 - Create new Google Docs with custom titles and content
 - Retrieve document content and metadata
 - Update existing documents with new content
@@ -24,7 +33,7 @@ A powerful Model Context Protocol (MCP) server implementation for seamless Googl
 
 1. Clone this repository:
    ```bash
-   git clone https://github.com/lkm1developer/google-docs-mcp-server.git
+   git clone https://github.com/brdemorin/google-docs-mcp-server.git
    cd google-docs-mcp-server
    ```
 
@@ -262,6 +271,7 @@ To use this server with Claude or other MCP-compatible assistants, add it to you
 | `google_docs_list` | List Google Docs accessible to the authenticated user | `pageSize` (optional), `pageToken` (optional) |
 | `google_docs_delete` | Delete a Google Doc | `documentId` |
 | `google_docs_export` | Export a Google Doc to different formats | `documentId`, `mimeType` (optional) |
+| `google_docs_to_markdown` | Export a Google Doc to Markdown format | `documentId` |
 | `google_docs_share` | Share a Google Doc with specific users | `documentId`, `emailAddress`, `role` (optional) |
 | `google_docs_search` | Search for Google Docs by title or content | `query`, `pageSize` (optional), `pageToken` (optional) |
 | `google_docs_verify_connection` | Verify connection with Google Docs API | None |
@@ -315,6 +325,27 @@ Here are some examples of how to use the tools:
     "query": "meeting notes",
     "pageSize": 5
   }
+}
+```
+
+### Export to Markdown
+
+```json
+{
+  "name": "google_docs_to_markdown",
+  "arguments": {
+    "documentId": "1Ax7vsdg3_YhKjkl2P0TZ5XYZ123456"
+  }
+}
+```
+
+Returns:
+```json
+{
+  "documentId": "1Ax7vsdg3_YhKjkl2P0TZ5XYZ123456",
+  "title": "My Document",
+  "markdown": "# Heading\n\nThis is the document content in **Markdown** format.",
+  "url": "https://docs.google.com/document/d/1Ax7vsdg3_YhKjkl2P0TZ5XYZ123456/edit"
 }
 ```
 
