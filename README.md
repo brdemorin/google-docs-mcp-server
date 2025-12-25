@@ -328,7 +328,7 @@ Or with OAuth credentials:
 | `google_docs_list` | List Google Docs accessible to the authenticated user | `pageSize` (optional), `pageToken` (optional) |
 | `google_docs_delete` | Delete a Google Doc | `documentId` |
 | `google_docs_export` | Export a Google Doc to different formats | `documentId`, `mimeType` (optional) |
-| `google_docs_to_markdown` | Export a Google Doc to Markdown format | `documentId` |
+| `google_docs_to_markdown` | Export a Google Doc to Markdown format | `documentId`, `markdownOnly` (optional) |
 | `google_docs_share` | Share a Google Doc with specific users | `documentId`, `emailAddress`, `role` (optional) |
 | `google_docs_search` | Search for Google Docs by title or content | `query`, `pageSize` (optional), `pageToken` (optional) |
 | `google_docs_verify_connection` | Verify connection with Google Docs API | None |
@@ -393,16 +393,6 @@ Here are some examples of how to use the tools:
   "arguments": {
     "documentId": "1Ax7vsdg3_YhKjkl2P0TZ5XYZ123456"
   }
-}
-```
-
-Returns:
-```json
-{
-  "documentId": "1Ax7vsdg3_YhKjkl2P0TZ5XYZ123456",
-  "title": "My Document",
-  "markdown": "# Heading\n\nThis is the document content in **Markdown** format.",
-  "url": "https://docs.google.com/document/d/1Ax7vsdg3_YhKjkl2P0TZ5XYZ123456/edit"
 }
 ```
 
