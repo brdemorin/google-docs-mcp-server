@@ -1,14 +1,23 @@
 {
-  "name": "google-docs-mcp-server",
-  "version": "0.1.0",
-  "description": "A powerful Model Context Protocol (MCP) server implementation for seamless Google Docs API integration, enabling AI assistants to create, read, update, and manage Google Docs",
+  "name": "@brdemorin/google-docs-mcp-server",
+  "version": "0.2.0",
+  "description": "A powerful Model Context Protocol (MCP) server implementation for seamless Google Docs API integration, enabling AI assistants to create, read, update, and manage Google Docs with markdown export support",
   "main": "dist/index.js",
+  "bin": {
+    "google-docs-mcp-server": "dist/index.js"
+  },
   "type": "module",
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
   "scripts": {
     "build": "tsc",
     "start": "node dist/index.js",
     "dev": "tsx --watch src/index.ts",
-    "stdio": "node dist/index.js"
+    "stdio": "node dist/index.js",
+    "prepublishOnly": "npm run build"
   },
   "keywords": [
     "mcp",
@@ -22,10 +31,22 @@
     "typescript",
     "collaboration",
     "content-creation",
-    "ai-tools"
+    "ai-tools",
+    "markdown"
   ],
-  "author": "lakhvinder singh",
+  "author": "Brian Morin <brdemorin@yahoo.com>",
+  "contributors": [
+    "lakhvinder singh (original author)"
+  ],
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/brdemorin/google-docs-mcp-server.git"
+  },
+  "bugs": {
+    "url": "https://github.com/brdemorin/google-docs-mcp-server/issues"
+  },
+  "homepage": "https://github.com/brdemorin/google-docs-mcp-server#readme",
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.8.0",
     "googleapis": "^133.0.0",
