@@ -140,20 +140,6 @@ class GoogleDocsServer {
           }
         },
         {
-          name: 'google_docs_get',
-          description: 'Get a Google Doc by ID',
-          inputSchema: {
-            type: 'object',
-            properties: {
-              documentId: { 
-                type: 'string', 
-                description: 'ID of the document to retrieve' 
-              }
-            },
-            required: ['documentId']
-          }
-        },
-        {
           name: 'google_docs_update',
           description: 'Update a Google Doc with new content',
           inputSchema: {
@@ -327,16 +313,6 @@ class GoogleDocsServer {
               args.title as string,
               args.content as string | undefined
             );
-            return {
-              content: [{
-                type: 'text',
-                text: JSON.stringify(result, null, 2)
-              }]
-            };
-          }
-          
-          case 'google_docs_get': {
-            const result = await this.googleDocs.getDocument(args.documentId as string);
             return {
               content: [{
                 type: 'text',

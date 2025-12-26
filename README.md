@@ -323,7 +323,6 @@ Or with OAuth credentials:
 | Tool Name | Description | Required Parameters |
 |-----------|-------------|---------------------|
 | `google_docs_create` | Create a new Google Doc | `title`, `content` (optional) |
-| `google_docs_get` | Get a Google Doc by ID | `documentId` |
 | `google_docs_update` | Update a Google Doc with new content | `documentId`, `content`, `replaceAll` (optional) |
 | `google_docs_list` | List Google Docs accessible to the authenticated user | `pageSize` (optional), `pageToken` (optional) |
 | `google_docs_delete` | Delete a Google Doc | `documentId` |
@@ -354,17 +353,6 @@ Here are some examples of how to use the tools:
 ```json
 {
   "name": "google_docs_to_markdown",
-  "arguments": {
-    "documentId": "1Ax7vsdg3_YhKjkl2P0TZ5XYZ123456"
-  }
-}
-```
-
-### Get a document
-
-```json
-{
-  "name": "google_docs_get",
   "arguments": {
     "documentId": "1Ax7vsdg3_YhKjkl2P0TZ5XYZ123456"
   }
